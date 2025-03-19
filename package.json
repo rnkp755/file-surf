@@ -1,6 +1,6 @@
 {
   "name": "file-surf",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React package that extends Monaco Editor with VS Code-like file explorer capabilities, allowing users to navigate through multiple files and folders with a familiar interface",
   "type": "module",
   "main": "dist/index.js",
