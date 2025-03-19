@@ -1,0 +1,64 @@
+{
+  "name": "file-surf",
+  "version": "1.0.2",
+  "description": "A React package that extends Monaco Editor with VS Code-like file explorer capabilities, allowing users to navigate through multiple files and folders with a familiar interface",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./style.css": "./dist/index.css"
+  },
+  "files": [
+    "dist",
+    "dist/index.css"
+  ],
+  "peerDependencies": {
+    "react": "^18.3.1 || ^19.0.0",
+    "react-dom": "^18.3.1 || ^19.0.0"
+  },
+  "scripts": {
+    "build:css": "postcss src/styles/index.css -o dist/index.css",
+    "build": "tsup && npm run build:css",
+    "release": "npm run build && npm version patch && git push origin main --follow-tags && npm publish"
+  },
+  "keywords": [
+    "monaco",
+    "file-explorer",
+    "file-tree",
+    "file-surf"
+  ],
+  "author": "Raushan Kumar Thakur",
+  "license": "MIT",
+  "dependencies": {
+    "@monaco-editor/react": "^4.6.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.462.0",
+    "monaco-editor": "^0.45.0",
+    "sonner": "^1.5.0",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.14",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.0.14",
+    "tsup": "^8.4.0",
+    "typescript": "^5.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rnkp755/file-surf.git"
+  }
+}

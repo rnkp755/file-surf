@@ -1,0 +1,164 @@
+/* index.css */
+@config "../../tailwind.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 225 29% 7%;
+        --foreground: 210 40% 98%;
+        --card: 222.2 84% 4.9%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222.2 84% 4.9%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 217 91.2% 59.8%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 217.2 32.6% 17.5%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217.2 32.6% 17.5%;
+        --muted-foreground: 215 20.2% 65.1%;
+        --accent: 217.2 32.6% 17.5%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217.2 32.6% 17.5%;
+        --input: 217.2 32.6% 17.5%;
+        --ring: 212.7 26.8% 83.9%;
+        --radius: 0.5rem;
+        --sidebar-background: 223 24% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+}
+
+.file-explorer {
+    @apply antialiased overflow-hidden;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+}
+
+@layer utilities {
+    .scrollbar-none {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .scrollbar-none::-webkit-scrollbar {
+        display: none;
+    }
+
+    .glass-morphism {
+        @apply backdrop-blur-xl border shadow-glass;
+        background-color: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .neo-blur {
+        @apply backdrop-blur-2xl border;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .text-gradient {
+        @apply bg-clip-text text-transparent;
+        background: linear-gradient(to bottom right,
+                rgba(255, 255, 255, 1),
+                rgba(255, 255, 255, 0.9),
+                rgba(255, 255, 255, 0.7));
+    }
+
+    .text-gradient-primary {
+        @apply bg-gradient-to-br from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent;
+    }
+}
+
+.file-explorer .resize-handle {
+    @apply bg-explorer-border cursor-col-resize hover:bg-primary/50 transition-colors;
+    width: 0.25rem;
+}
+
+.file-explorer {
+    @apply bg-explorer-background text-explorer-foreground overflow-hidden;
+}
+
+.file-explorer .file-tree {
+    @apply overflow-y-auto overflow-x-hidden h-full;
+    padding-left: 0.5rem;
+}
+
+.file-explorer .file-item {
+    @apply flex items-center cursor-pointer hover:bg-explorer-hover transition-colors;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.file-explorer .file-item.active {
+    @apply bg-explorer-active;
+    color: rgb(255, 255, 255);
+}
+
+.file-explorer .file-icon {
+    @apply text-explorer-icons flex-shrink-0;
+    margin-right: 0.25rem;
+}
+
+.file-explorer .monaco-editor-container {
+    @apply h-full w-full overflow-hidden;
+    text-align: left;
+}
+
+.file-explorer .tabs-container {
+    @apply flex bg-tabs-background border-b border-tabs-border overflow-x-auto flex-nowrap;
+    /* Removed scrollbar-none styles and ensured horizontal scrolling */
+}
+
+.file-explorer .tab {
+    @apply flex items-center border-r border-tabs-border text-explorer-foreground flex-shrink-0;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    user-select: none;
+}
+
+.file-explorer .tab.active {
+    @apply bg-tabs-active;
+    color: rgb(255, 255, 255);
+}
+
+.file-explorer .tab-close {
+    @apply opacity-50 hover:opacity-100 transition-opacity;
+    margin-left: 0.5rem;
+}
+
+.tab-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2em 0.4em;
+}
+
+.file-explorer .editor-container {
+    @apply flex flex-col h-full w-full;
+}
+
+.file-explorer .highlight-animation {
+    animation: highlight 1s ease-in-out;
+}
+
+@keyframes highlight {
+    0% {
+        background-color: transparent;
+    }
+
+    50% {
+        background-color: rgba(156, 220, 254, 0.3);
+    }
+
+    100% {
+        background-color: transparent;
+    }
+}
